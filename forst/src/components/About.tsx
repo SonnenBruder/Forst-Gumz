@@ -1,0 +1,37 @@
+import React from "react";
+import "./About.css";
+
+const About: React.FC = () => {
+  return (
+    <section id="about" className="about">
+      <div className="container">
+        <div className="about-content">
+          <div className="about-text">
+            <h2>Über mich</h2>
+            <p>
+              Als erfahrener Forstexperte in Schorndorf, Baden-Württemberg,
+              bringe ich umfassende Kenntnisse in der Bewertung von
+              Forstgrundstücken mit. Meine Expertise basiert auf jahrelanger
+              Praxis und fundiertem Fachwissen über die regionalen
+              Gegebenheiten.
+            </p>
+            <div className="qualifications">
+              <h3>Qualifikationen</h3>
+              <ul>
+                <li>Zertifizierter Forstbewerter</li>
+                <li>Langjährige Erfahrung in der Region</li>
+                <li>Spezialisierung auf Forstgrundstücke</li>
+                <li>Unabhängige Beratung</li>
+              </ul>
+            </div>
+          </div>
+          <div className="about-image">
+            <div className="placeholder-image">Profilbild</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default About;
