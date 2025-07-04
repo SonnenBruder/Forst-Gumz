@@ -1,5 +1,5 @@
 import "./Hero.css";
-import ForestHeroImg from "../assets/images/ForestHero.jpg";
+//import ForestHeroImg from "../assets/images/ForestHero.jpg";
 import FuchsImg from "../assets/images/WaldFuchs.webp";
 
 const Hero = () => {
