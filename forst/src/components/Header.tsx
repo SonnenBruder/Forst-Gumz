@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Header.css";
-import BaumIcon from "../assets/images/BaumIcon.png";
+import BaumIcon from "../assets/Images/BaumIcon.png";
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
