@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
           </div>
           <div className="footer-section">
             <h4>Kontakt</h4>
-            <p>📧 info@forst-gumz.de</p>
+            <p>📧 info@Friedemann-gumz.de</p>
             <p>📞 +49 123 456 789</p>
             <p>📍 Schorndorf, Baden-Württemberg</p>
           </div>

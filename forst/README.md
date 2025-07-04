@@ -1,10 +1,10 @@
-# Forst Gumz - Forstbewertung Schorndorf
+# Friedemann Gumz - Forstbewertung Schorndorf
 
-Eine Single Page Application für das Forstbewertungsunternehmen Forst Gumz in Schorndorf, Baden-Württemberg.
+Eine Single Page Application für das Forstbewertungsunternehmen Friedemann Gumz in Schorndorf, Baden-Württemberg.
 
 ## 🌲 Über das Projekt
 
-Diese Website präsentiert die Dienstleistungen von Forst Gumz, einem spezialisierten Unternehmen für die Bewertung von Forstgrundstücken.
+Diese Website präsentiert die Dienstleistungen von Friedemann Gumz, einem spezialisierten Unternehmen für die Bewertung von Forstgrundstücken.
 
 ## ✨ Features
 

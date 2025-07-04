@@ -37,7 +37,9 @@ const Contact: React.FC = () => {
             <h3>Kontaktinformationen</h3>
             <div className="contact-item">
               <strong>📧 E-Mail:</strong>
-              <a href="mailto:info@forst-gumz.de">info@forst-gumz.de</a>
+              <a href="mailto:info@Friedemann-gumz.de">
+                info@Friedemann-gumz.de
+              </a>
             </div>
             <div className="contact-item">
               <strong>📞 Telefon:</strong>
