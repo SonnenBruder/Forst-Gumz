@@ -1,5 +1,6 @@
 import React from "react";
 import "./About.css";
+import ProfilBild from "../assets/Images/FredGumz.jpg";
 
 const About: React.FC = () => {
   return (
@@ -26,7 +27,7 @@ const About: React.FC = () => {
             </div>
           </div>
           <div className="about-image">
-            <div className="placeholder-image">Profilbild</div>
+            <img src={ProfilBild} alt="ProfilBild" className="profile-img" />
           </div>
         </div>
       </div>
