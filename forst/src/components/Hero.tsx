@@ -1,6 +1,6 @@
 import "./Hero.css";
 //import ForestHeroImg from "../assets/images/ForestHero.jpg";
-import FuchsImg from "../assets/Images/WaldFuchs.webp";
+import FuchsImg from "../assets/Images/WaldFuchs.png";
 
 const Hero = () => {
   const scrollToContact = () => {
