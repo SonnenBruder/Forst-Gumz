@@ -1,10 +1,12 @@
 .hero {
+  width: 100%;
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  padding: 100px 20px 50px;
   position: relative;
+  overflow: hidden;
+  padding: 100px 0 50px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #93c5a2 100%);
 }
 
 .hero::before {
@@ -14,51 +16,113 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff" points="0,0 0,800 300,1000 1000,200 1000,0"/></svg>') no-repeat center center;
+  background-image: url('../assets/images/ForestHero.jpg');
   background-size: cover;
-  opacity: 0.1;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.2;
+  z-index: 1;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff" fill-opacity="0.8" points="0,0 0,800 300,1000 1000,200 1000,0"/></svg>') no-repeat center center;
+  background-size: cover;
+  z-index: 2;
 }
 
 .hero-content {
   max-width: 1200px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  padding: 0 20px;
+  display: flex;
   gap: 4rem;
   align-items: center;
   position: relative;
-  z-index: 1;
+  z-index: 3;
+  width: 100%;
+}
+
+.hero-text {
+  flex: 1;
+  max-width: 600px;
 }
 
 .hero-content h1 {
-  font-size: 3rem;
+  font-size: clamp(2rem, 4vw, 3rem);
   color: #2d5a27;
   margin-bottom: 1.5rem;
   line-height: 1.2;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
 }
 
 .hero-content p {
-  font-size: 1.2rem;
-  color: #555;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: #444;
   margin-bottom: 2rem;
+  line-height: 1.6;
+  text-shadow: 0.5px 0.5px 1px rgba(255, 255, 255, 0.8);
 }
 
-.hero-image {
+.cta-button {
+  background-color: #2d5a27;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 15px rgba(45, 90, 39, 0.3);
+}
+
+.cta-button:hover {
+  background-color: #1e3a1b;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(45, 90, 39, 0.4);
+}
+
+.hero-image-container {
+  flex: 1;
   height: 400px;
+  max-width: 500px;
+  position: relative;
+  z-index: 4;
+}
+
+.hero-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 3px solid rgba(255, 255, 255, 0.8);
 }
 
 @media (max-width: 768px) {
+  .hero {
+    padding: 80px 0 40px;
+  }
+  
   .hero-content {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: 2rem;
     text-align: center;
+    padding: 0 15px;
   }
 
-  .hero-content h1 {
-    font-size: 2.2rem;
+  .hero-text {
+    max-width: 100%;
   }
 
-  .hero-image {
+  .hero-image-container {
     height: 250px;
+    max-width: 100%;
   }
 }

@@ -1,7 +1,6 @@
-import React from "react";
 import "./Services.css";
 
-const Services: React.FC = () => {
+const Services = () => {
   const services = [
     {
       icon: "🌲",
@@ -40,7 +39,7 @@ const Services: React.FC = () => {
 
   return (
     <section id="services" className="services">
-      <div className="container">
+      <div className="services-container">
         <h2>Meine Dienstleistungen</h2>
         <div className="services-grid">
           {services.map((service, index) => (
