@@ -31,7 +31,7 @@ const About: React.FC = () => {
           <div className="about-image">
             <img
               src={ProfilBild}
-              alt="Friedemann Gumz"
+              alt="Friedemann Gumz - Diplom-Ingenieur Forstwirtschaft und Steuerberater in Schorndorf"
               className="profile-img"
             />
           </div>
