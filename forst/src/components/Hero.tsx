@@ -1,6 +1,6 @@
 import "./Hero.css";
 //import ForestHeroImg from "../assets/images/ForestHero.jpg";
-import FuchsImg from "../assets/Images/WaldFuchs.png";
+import FuchsImg from "../assets/Images/WaldFuchs.webp";
 
 const Hero = () => {
   const scrollToContact = () => {
@@ -12,11 +12,11 @@ const Hero = () => {
     <section id="home" className="hero">
       <div className="hero-content">
         <div className="hero-text">
-          <h1>Ihr Experte für Forstbewertung in Schorndorf</h1>
+          <h1>Ihr Experte für Waldbewertungen </h1>
           <p>
-            Professionelle Bewertung von Forstgrundstücken in Baden-Württemberg.
-            Mit langjähriger Erfahrung und lokalem Know-how biete ich Ihnen
-            zuverlässige und transparente Forstbewertungen.
+            Professionelle Bewertung von Waldbeständen in Baden-Württemberg. Mit
+            langjähriger Erfahrung und Know-how biete ich Ihnen zuverlässige und
+            transparente Waldbewertungen.
           </p>
           <button className="cta-button" onClick={scrollToContact}>
             Kostenloses Erstgespräch vereinbaren

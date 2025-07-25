@@ -1,6 +1,6 @@
 import React from "react";
 import "./About.css";
-import ProfilBild from "../assets/Images/FredGumz.jpg";
+import ProfilBild from "../assets/Images/FredGumz.webp";
 
 const About: React.FC = () => {
   return (
@@ -9,7 +9,8 @@ const About: React.FC = () => {
         <div className="about-content">
           <div className="about-text">
             <h2>Über mich</h2>
-            <p>
+            <h3 className="name-title">Friedemann Gumz</h3>
+            <p className="description">
               Als erfahrener Forstexperte in Schorndorf, Baden-Württemberg,
               bringe ich umfassende Kenntnisse in der Bewertung von
               Forstgrundstücken mit. Meine Expertise basiert auf jahrelanger
@@ -19,15 +20,20 @@ const About: React.FC = () => {
             <div className="qualifications">
               <h3>Qualifikationen</h3>
               <ul>
-                <li>Zertifizierter Forstbewerter</li>
+                <li>Diplom-Ingenieur (FH) Forstwirtschaft</li>
+                <li>Zertifizierter Steuerberater</li>
                 <li>Langjährige Erfahrung in der Region</li>
-                <li>Spezialisierung auf Forstgrundstücke</li>
+                <li>Spezialisierung auf Waldgrundstücke</li>
                 <li>Unabhängige Beratung</li>
               </ul>
             </div>
           </div>
           <div className="about-image">
-            <img src={ProfilBild} alt="ProfilBild" className="profile-img" />
+            <img
+              src={ProfilBild}
+              alt="Friedemann Gumz"
+              className="profile-img"
+            />
           </div>
         </div>
       </div>
