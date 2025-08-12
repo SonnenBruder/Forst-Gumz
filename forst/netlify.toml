@@ -14,8 +14,14 @@
 # Form-Einstellungen für Netlify Forms
 [forms]
   spam_detection = true
+
+# E-Mail-Benachrichtigungen für Form-Submissions
+[[notification]]
+  type = "email"
+  event = "form-submission"
+  recipients = ["fredgumz@googlemail.com"]
   
-# Headers for better performance
+# Headers for better performance and correct MIME types
 [[headers]]
   for = "/*"
   [headers.values]
@@ -31,11 +37,47 @@
     Content-Type = "application/javascript; charset=utf-8"
 
 [[headers]]
+  for = "*.js"
+  [headers.values]
+    Content-Type = "application/javascript; charset=utf-8"
+
+[[headers]]
+  for = "*.mjs"
+  [headers.values]
+    Content-Type = "application/javascript; charset=utf-8"
+
+[[headers]]
+  for = "/assets/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "text/css; charset=utf-8"
+
+[[headers]]
   for = "*.css"
+  [headers.values]
+    Content-Type = "text/css; charset=utf-8"
+
+[[headers]]
+  for = "*.wasm"
+  [headers.values]
+    Content-Type = "application/wasm"
+
+[[headers]]
+  for = "*.json"
+  [headers.values]
+    Content-Type = "application/json; charset=utf-8"
+
+[[headers]]
+  for = "/assets/*.webp"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
-  for = "*.js"
+  for = "/assets/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/assets/*.jpg"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"

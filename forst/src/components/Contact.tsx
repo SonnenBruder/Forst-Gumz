@@ -10,9 +10,6 @@ const Contact: React.FC = () => {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<
-    "idle" | "success" | "error"
-  >("idle");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -34,7 +31,6 @@ const Contact: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus("idle");
 
     try {
       await fetch("/", {
@@ -46,16 +42,12 @@ const Contact: React.FC = () => {
         }),
       });
 
-      setSubmitStatus("success");
       setFormData({ name: "", email: "", phone: "", message: "" });
-
-      // Success message
       alert(
         "Vielen Dank für Ihre Nachricht! Ich werde mich schnellstmöglich bei Ihnen melden."
       );
     } catch (error) {
       console.error("Fehler beim Senden:", error);
-      setSubmitStatus("error");
       alert(
         "Es gab einen Fehler beim Senden Ihrer Nachricht. Bitte versuchen Sie es erneut oder rufen Sie mich direkt an."
       );
