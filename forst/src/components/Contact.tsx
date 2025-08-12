@@ -9,6 +9,11 @@ const Contact: React.FC = () => {
     message: "",
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -18,13 +23,45 @@ const Contact: React.FC = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const encode = (data: Record<string, string>) => {
+    return Object.keys(data)
+      .map(
+        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+      )
+      .join("&");
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Formulardaten:", formData);
-    alert(
-      "Vielen Dank für Ihre Nachricht! Ich werde mich schnellstmöglich bei Ihnen melden."
-    );
-    setFormData({ name: "", email: "", phone: "", message: "" });
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    try {
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({
+          "form-name": "contact",
+          ...formData,
+        }),
+      });
+
+      setSubmitStatus("success");
+      setFormData({ name: "", email: "", phone: "", message: "" });
+
+      // Success message
+      alert(
+        "Vielen Dank für Ihre Nachricht! Ich werde mich schnellstmöglich bei Ihnen melden."
+      );
+    } catch (error) {
+      console.error("Fehler beim Senden:", error);
+      setSubmitStatus("error");
+      alert(
+        "Es gab einen Fehler beim Senden Ihrer Nachricht. Bitte versuchen Sie es erneut oder rufen Sie mich direkt an."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleCall = () => {
@@ -54,7 +91,26 @@ const Contact: React.FC = () => {
             <div className="option-icon">✉️</div>
             <h3>Nachricht hinterlassen</h3>
             <p>Schreiben Sie mir eine Nachricht - ich melde mich zurück</p>
+
+            {/* Netlify Forms benötigt ein verstecktes HTML-Form für die Erkennung */}
+            <form
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+              hidden
+            >
+              <input type="text" name="name" />
+              <input type="email" name="email" />
+              <input type="tel" name="phone" />
+              <textarea name="message"></textarea>
+            </form>
+
             <form className="contact-form" onSubmit={handleSubmit}>
+              {/* Honeypot field für Spam-Schutz */}
+              <input type="hidden" name="bot-field" />
+              <input type="hidden" name="form-name" value="contact" />
+
               <div className="form-row">
                 <div className="form-group">
                   <label htmlFor="name">Name *</label>
@@ -65,6 +121,7 @@ const Contact: React.FC = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
                 <div className="form-group">
@@ -75,6 +132,7 @@ const Contact: React.FC = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
+                    disabled={isSubmitting}
                   />
                 </div>
               </div>
@@ -87,6 +145,7 @@ const Contact: React.FC = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
+                  disabled={isSubmitting}
                 />
               </div>
               <div className="form-group">
@@ -99,10 +158,15 @@ const Contact: React.FC = () => {
                   value={formData.message}
                   onChange={handleChange}
                   required
+                  disabled={isSubmitting}
                 ></textarea>
               </div>
-              <button type="submit" className="submit-button">
-                Nachricht senden
+              <button
+                type="submit"
+                className={`submit-button ${isSubmitting ? "submitting" : ""}`}
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Wird gesendet..." : "Nachricht senden"}
               </button>
             </form>
           </div>
