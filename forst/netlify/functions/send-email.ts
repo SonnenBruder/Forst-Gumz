@@ -1,7 +1,7 @@
 import type { Handler } from "@netlify/functions";
 import nodemailer from "nodemailer";
 
-const REQUIRED_ENV = [ 
+const REQUIRED_ENV = [
   "SMTP_HOST",
   "SMTP_PORT",
   "SMTP_USER",
@@ -15,9 +15,9 @@ function missingEnv(): string[] {
 }
 
 function escapeHtml(str: string) {
-  return str.replace(/[&<>"']/g, (s) => (
-    { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[s] as string
-  ));
+  return str.replace(/[&<>"']/g, (s) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[s] as string)
+  );
 }
 
 export const handler: Handler = async (event) => {
@@ -39,7 +39,6 @@ export const handler: Handler = async (event) => {
     const data = JSON.parse(event.body);
     const { name, email, phone, message, botField } = data || {};
 
-    // Honeypot -> still return success
     if (botField) {
       return { statusCode: 200, body: JSON.stringify({ success: true }) };
     }
@@ -48,15 +47,42 @@ export const handler: Handler = async (event) => {
       return { statusCode: 422, body: JSON.stringify({ error: "Missing required fields" }) };
     }
 
+    const host = process.env.SMTP_HOST!;
+    const port = Number(process.env.SMTP_PORT);
+    const secure = port === 465; // SMTPS
+    console.log(`[send-email] Connecting to ${host}:${port} secure=${secure}`);
+
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT),
-      secure: Number(process.env.SMTP_PORT) === 465,
+      host,
+      port,
+      secure,
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
       },
-    });
+      connectionTimeout: 15000, // 15s
+      greetingTimeout: 10000,
+      socketTimeout: 20000,
+      tls: {
+        // Für 587 STARTTLS erlaubt unsicheren Start, danach Upgrade
+        rejectUnauthorized: true,
+        minVersion: "TLSv1.2",
+      },
+      logger: true,
+      debug: true,
+    } as any);
+
+    // Vorab prüfen
+    try {
+      await transporter.verify();
+      console.log("[send-email] SMTP verify OK");
+    } catch (vErr: any) {
+      console.error("[send-email] transporter.verify failed:", vErr);
+      return {
+        statusCode: 502,
+        body: JSON.stringify({ error: "SMTP verify failed", details: vErr.message }),
+      };
+    }
 
     const safeName = escapeHtml(name);
     const safeEmail = escapeHtml(email);
@@ -85,6 +111,13 @@ export const handler: Handler = async (event) => {
 
     return { statusCode: 200, body: JSON.stringify({ success: true }) };
   } catch (err: any) {
+    if (err.code === "ETIMEDOUT" || err.command === "CONN") {
+      console.error("[send-email] Connection timeout:", err);
+      return {
+        statusCode: 504,
+        body: JSON.stringify({ error: "SMTP timeout", details: err.message }),
+      };
+    }
     console.error("[send-email] Error:", err);
     return {
       statusCode: 500,
