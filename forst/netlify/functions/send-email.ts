@@ -99,7 +99,12 @@ export const handler: Handler = async (event) => {
       <hr>
       <small>Gesendet über das Kontaktformular (forestgumz.de)</small>
     `;
-
+        // Vor dem sendMail-Aufruf einfügen:
+    const mask = (v?: string) =>
+      v ? v.replace(/(^.).+(@.*)/, (_, a, b) => a + "*****" + b) : "n/a";
+    console.log("[send-email] Using FROM_EMAIL:", mask(process.env.FROM_EMAIL));
+    console.log("[send-email] Using TO_EMAIL:", mask(process.env.TO_EMAIL));
+    console.log("[send-email] Sending email to:", mask(process.env.TO_EMAIL));
     await transporter.sendMail({
       from: process.env.FROM_EMAIL,
       to: process.env.TO_EMAIL,
