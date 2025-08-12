@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Header.css";
+import { Link } from "react-router-dom";
 import BaumIcon from "../assets/Images/BaumIcon.png";
 
 const Header: React.FC = () => {
@@ -14,10 +15,12 @@ const Header: React.FC = () => {
   return (
     <header className="header">
       <div className="container">
-        <div className="logo">
-          <img src={BaumIcon} alt="Forest Gumz Logo" className="logo-icon" />
-          <h2>Forest Gumz</h2>
-        </div>
+        <Link to="/" className="logo">
+          <div className="logo">
+            <img src={BaumIcon} alt="Forest Gumz Logo" className="logo-icon" />
+            <h2>Forest Gumz</h2>
+          </div>
+        </Link>
         <nav className={`nav ${isMenuOpen ? "nav-open" : ""}`}>
           <ul>
             <li>

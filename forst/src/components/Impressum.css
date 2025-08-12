@@ -1,0 +1,103 @@
+.impressum {
+  width: 100vw;
+  padding: 80px 0;
+  background-color: #ffffff;
+  margin: 0;
+}
+
+.impressum .container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.impressum h1 {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  color: #2d5a27;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.impressum p {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  color: #333;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+}
+
+.impressum strong {
+  color: #2d5a27;
+  font-weight: 600;
+}
+
+.impressum a {
+  color: #2d5a27;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.impressum a:hover {
+  color: #1e3a1b;
+}
+
+/* Navigation Links */
+.back-navigation {
+  margin-bottom: 2rem;
+}
+
+.back-navigation.bottom {
+  margin-top: 3rem;
+  margin-bottom: 0;
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 2px solid #e9ecef;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  color: #2d5a27;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 12px 20px;
+  background-color: rgba(45, 90, 39, 0.1);
+  border: 2px solid #2d5a27;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.back-link:hover {
+  background-color: #2d5a27;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(45, 90, 39, 0.3);
+}
+
+@media (max-width: 768px) {
+  .impressum .container {
+    padding: 0 15px;
+  }
+  
+  .impressum p {
+    font-size: 0.9rem;
+  }
+
+  .back-navigation {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .impressum .container {
+    padding: 0 10px;
+  }
+  
+  .impressum h1 {
+    font-size: 1.8rem;
+  }
+
+  .back-link {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+}

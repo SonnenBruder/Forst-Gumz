@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Footer.css";
 
 const Footer: React.FC = () => {
@@ -39,10 +40,7 @@ const Footer: React.FC = () => {
             <h4>Rechtliches</h4>
             <ul>
               <li>
-                <a href="#impressum">Impressum</a>
-              </li>
-              <li>
-                <a href="#datenschutz">Datenschutz</a>
+                <Link to="/impressum">Impressum und Datenschutz</Link>
               </li>
             </ul>
           </div>
