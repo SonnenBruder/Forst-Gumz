@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
             <div className="contact-item">
               <span className="contact-icon">📧</span>
               <span className="contact-label">E-Mail:</span>
-              <span className="contact-value">fredgumz@googlemail.com</span>
+              <span className="contact-value">kontakt@forestgumz.de</span>
             </div>
             <div className="contact-item">
               <span className="contact-icon">📞</span>
