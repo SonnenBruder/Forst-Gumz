@@ -67,11 +67,11 @@ const Impressum: React.FC = () => {
           <br />
           Die Regelungen sind einsehbar unter:{" "}
           <a
-            href="https://www.bundessteuerberaterkammer.de"
+            href="https://www.bstbk.de/de/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            www.bundessteuerberaterkammer.de
+            www.bstbk.de
           </a>
         </p>
 
