@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://6867bda37a431b215fc688b0--forest-gumz.netlify.app/
+Sitemap: https://forestgumz.de/sitemap.xml
+
+Disallow: /.netlify/
+Disallow: /.netlify/functions/
