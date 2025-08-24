@@ -49,7 +49,7 @@ const Impressum: React.FC = () => {
         <p>
           <strong>Berufsbezeichnung:</strong>
           <br />
-          Diplom-Ingenieur Forstwirtschaft
+          Diplom-Ingenieur (FH)-Forst 
           <br />
           Steuerberater
           <br />
