@@ -19,7 +19,7 @@ const Impressum: React.FC = () => {
         </div>
         <p>Angaben gemäß § 5 TMG</p>
         <p>
-          Friedemann Gumz - Diplom-Ingenieur Forstwirtschaft & Steuerberater
+          Friedemann Gumz - Diplom-Ingenieur (FH)-Forst  - Steuerberater - 
           <br />
           Karlstraße 19
           <br />
@@ -80,7 +80,7 @@ const Impressum: React.FC = () => {
           <br />
           Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:
           <br />
-          [Auf Anfrage verfügbar]
+          [71 532 406 483]
           <br />
         </p>
 
